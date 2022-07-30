@@ -10,6 +10,7 @@ if( ! existsSync(folder) ) {
 
 execSync("rm -rf ./tmp");
 execSync("mkdir tmp");
+execSync("npx vite build --base=./");
 execSync("cp -r ./dist/* ./tmp");
 execSync("cp ./php-scripts/* ./tmp");
 
@@ -21,4 +22,5 @@ writeFileSync("./tmp/index.php", result, "utf-8");
 
 execSync("rm ./tmp/index.html");
 execSync(`cp -r ./tmp/* ${ folder }`);
+execSync(`sudo chown -R www-data ${folder}`);
 execSync(`rm -rf ./tmp`);
