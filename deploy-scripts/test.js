@@ -13,3 +13,5 @@ execSync(`mkdir ${folder}/test`);
 
 execSync(`cp ./php-scripts/modify.php ${ folder }/test/modify.php`);
 execSync(`cp ./php-scripts/file.php ${ folder }/test/file.php`);
+
+execSync(`sudo chown -R www-data ${folder}/test`);
