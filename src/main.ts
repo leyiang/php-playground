@@ -32,7 +32,7 @@ declare global {
 }
 
 if( import.meta.env.MODE === "development" ) {
-    window.endpoint = "http://localhost/test.php";
+    window.endpoint = import.meta.env.VITE_PLAYGROUND_URI + "/modifer-test.php";
 }
 
 function updateScript() {
@@ -63,9 +63,8 @@ function updateScript() {
             previewStatus.setAttribute("status", "success");
         }).catch( e => {
             previewStatus.setAttribute("status", "error");
-
-            console.log("Preview Failed:")
             console.error(e);
+            console.log("If you are getting 404 or cors erorrs, remeber to call `npm run deploy` for production. And `npm run deploy:test` for testing.")
         });
     }
 }
