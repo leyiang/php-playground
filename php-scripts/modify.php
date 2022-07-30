@@ -7,7 +7,7 @@ header("Content-Type: application/json; charset=utf-8");
 
 if( $_SERVER["REQUEST_METHOD"] === "POST" ) {
     $data = [
-        "msg" => "success123:w"
+        "msg" => "success"
     ];
 
     http_response_code(422);
