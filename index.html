@@ -5,6 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP Playground - Yiang</title>
+
+    <style>
+        .preview-status[status]::after {
+            --size: 1.25em;
+
+            content: '';
+            display: inline-block;
+            width: var(--size);
+            height: var(--size);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .preview-status[status="success"]::after {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' id='footer-sample-full' width='1em' height='1em' preserveAspectRatio='xMidYMid meet' viewBox='0 0 24 24' class='iconify iconify--akar-icons'%3e%3cpath fill='green' fill-rule='evenodd' d='M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11s11-4.925 11-11S18.075 1 12 1Zm4.768 9.14a1 1 0 1 0-1.536-1.28l-4.3 5.159l-2.225-2.226a1 1 0 0 0-1.414 1.414l3 3a1 1 0 0 0 1.475-.067l5-6Z' clip-rule='evenodd'%3e%3c/path%3e%3c/svg%3e");
+        }
+
+        .preview-status[status="error"]::after {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' id='footer-sample-full' width='1em' height='1em' preserveAspectRatio='xMidYMid meet' viewBox='0 0 24 24' class='iconify iconify--akar-icons'%3e%3cpath fill='red' fill-rule='evenodd' d='M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11s11-4.925 11-11S18.075 1 12 1Zm1 6a1 1 0 1 0-2 0v6a1 1 0 1 0 2 0V7Zm0 9.5a1 1 0 1 0-2 0v.5a1 1 0 1 0 2 0v-.5Z' clip-rule='evenodd'%3e%3c/path%3e%3c/svg%3e");
+        }
+
+        .preview-status[status="loading"]::after {
+            --size: 2em;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' id='footer-sample-full' width='1em' height='1em' preserveAspectRatio='xMidYMid meet' viewBox='0 0 24 24' class='iconify iconify--eos-icons'%3e%3ccircle cx='18' cy='12' r='0' fill='currentColor'%3e%3canimate attributeName='r' begin='.67' calcMode='spline' dur='1.5s' keySplines='0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8' repeatCount='indefinite' values='0;2;0;0'%3e%3c/animate%3e%3c/circle%3e%3ccircle cx='12' cy='12' r='0' fill='currentColor'%3e%3canimate attributeName='r' begin='.33' calcMode='spline' dur='1.5s' keySplines='0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8' repeatCount='indefinite' values='0;2;0;0'%3e%3c/animate%3e%3c/circle%3e%3ccircle cx='6' cy='12' r='0' fill='currentColor'%3e%3canimate attributeName='r' begin='0' calcMode='spline' dur='1.5s' keySplines='0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8' repeatCount='indefinite' values='0;2;0;0'%3e%3c/animate%3e%3c/circle%3e%3c/svg%3e");
+        }
+    </style>
 </head>
 <body class="m-0 h-100vh">
     <div
@@ -18,13 +44,14 @@
 
         <div class="preview-area flex-1 relative">
             <article class="notes absolute bottom-20px right-20px">
-                <p class="m0">
-                    Use <code>:w</code> or <kbd>Ctrl</kbd> + <kbd>s</kbd> to run the script
+                <p class="m0 flex items-center h-2em">
+                    <span id="preview-status" class="preview-status flex items-center mr-5px"></span>
+                    <span>Use <code>:w</code> or <kbd>Ctrl</kbd> + <kbd>s</kbd> to run the script</span>
                 </p>
             </article>
         </div>
     </div>
 
-    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="./src/main.ts"></script>
 </body>
 </html>

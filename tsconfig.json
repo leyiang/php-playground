@@ -1,6 +1,9 @@
 {
     "compilerOptions": {
-        "strict": true
+        "strict": true,
+        "module": "ESNext",
+        "types": ["vite/client"]
     },
+
     "include": ["./src"]
 }
