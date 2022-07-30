@@ -5,6 +5,7 @@ import { VimMode, initVimMode } from "monaco-vim";
 const editorDOM = document.getElementById("editor") as HTMLElement;
 const vimStatus = document.getElementById("vim-status") as HTMLElement;
 const previewStatus = document.getElementById("preview-status") as HTMLElement;
+const previewIframe = document.getElementById("preview-iframe") as HTMLIFrameElement;
 
 const editor = monaco.editor.create( editorDOM, {
     value: "<?php\n\n",
@@ -28,12 +29,16 @@ window.addEventListener("keydown", e => {
 declare global {
     interface Window {
         endpoint?: string;
+        previewURI: string;
     }
 }
 
 if( import.meta.env.MODE === "development" ) {
-    window.endpoint = import.meta.env.VITE_PLAYGROUND_URI + "/modifer-test.php";
+    window.endpoint = import.meta.env.VITE_PLAYGROUND_URI + "/test/modify.php";
+    window.previewURI = import.meta.env.VITE_PLAYGROUND_URI + "/test/file.php";
 }
+
+previewIframe.src = window.previewURI;
 
 function updateScript() {
     if( window["endpoint"] === undefined ) {
@@ -61,6 +66,7 @@ function updateScript() {
             throw r.statusText;
         }).then( r => {
             previewStatus.setAttribute("status", "success");
+            previewIframe.src = window.previewURI + "?time=" + Math.random();
         }).catch( e => {
             previewStatus.setAttribute("status", "error");
             console.error(e);
