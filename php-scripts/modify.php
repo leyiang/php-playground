@@ -11,7 +11,9 @@ function wrap( $content ) {
 if( $_SERVER["REQUEST_METHOD"] === "POST" ) {
     $data = json_decode( file_get_contents("php://input"), true );
     $handle = fopen("./file.php", "w");
+    $save = fopen("./content.txt", "w");
     fwrite($handle, wrap($data["value"]));
+    fwrite($save, $data["value"]);
 
     echo json_encode([
         "msg" => "success"

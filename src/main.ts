@@ -1,5 +1,14 @@
+declare global {
+    interface Window {
+        endpoint?: string;
+        previewURI: string;
+        injectValue?: string;
+    }
+}
+
 import "uno.css";
 import * as monaco from "monaco-editor";
+//@ts-ignore no @types/monaco-vim found
 import { VimMode, initVimMode } from "monaco-vim";
 
 const editorDOM = document.getElementById("editor") as HTMLElement;
@@ -7,8 +16,10 @@ const vimStatus = document.getElementById("vim-status") as HTMLElement;
 const previewStatus = document.getElementById("preview-status") as HTMLElement;
 const previewIframe = document.getElementById("preview-iframe") as HTMLIFrameElement;
 
+const defaultValue = "<?php \n\n";
+
 const editor = monaco.editor.create( editorDOM, {
-    value: "<?php\n\n",
+    value: window["injectValue"] || defaultValue ,
     language: "php",
     automaticLayout: true
 });
@@ -25,14 +36,6 @@ window.addEventListener("keydown", e => {
         updateScript();
     }
 });
-
-
-declare global {
-    interface Window {
-        endpoint?: string;
-        previewURI: string;
-    }
-}
 
 if( import.meta.env.MODE === "development" ) {
     window.endpoint = import.meta.env.VITE_PLAYGROUND_URI + "/test/modify.php";
