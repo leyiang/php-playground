@@ -10,8 +10,6 @@ if( ! existsSync(folder) ) {
     throw new Error("VITE_PLAYGROUND_ROOT is not a folder");
 }
 
-console.log("cp -r ./dist/* ./tmp" );
-
 execSync( "rm -rf ./tmp" );
 execSync( "mkdir tmp" );
 execSync( "npx vite build --base=./" );

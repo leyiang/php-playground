@@ -10,6 +10,7 @@ const previewIframe = document.getElementById("preview-iframe") as HTMLIFrameEle
 const editor = monaco.editor.create( editorDOM, {
     value: "<?php\n\n",
     language: "php",
+    automaticLayout: true
 });
 
 initVimMode( editor, vimStatus );
