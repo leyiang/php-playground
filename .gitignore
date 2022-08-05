@@ -4,3 +4,4 @@ dist
 tmp
 .idea
 .pnpm-debug.log
+vendor
