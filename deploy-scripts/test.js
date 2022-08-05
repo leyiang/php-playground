@@ -14,5 +14,6 @@ execSync( convertPathByPlatform(`mkdir ${folder}/test`) );
 
 execSync( convertPathByPlatform(`cp ./php-scripts/modify.php ${ folder }/test/modify.php`) );
 execSync( convertPathByPlatform(`cp ./php-scripts/file.php ${ folder }/test/file.php`) );
+execSync( convertPathByPlatform(`cp -r ./php-scripts/vendor/ ${ folder }/test`) );
 
 if( ! env.isWindows ) execSync( convertPathByPlatform(`sudo chown -R www-data ${folder}/test`) );
