@@ -1,3 +1,5 @@
+import {initResize} from "./resize";
+
 declare global {
     interface Window {
         endpoint?: string;
@@ -78,3 +80,9 @@ function updateScript() {
         });
     }
 }
+
+initResize(
+    document.querySelector(".resize") as HTMLElement,
+    document.querySelector(".code-area") as HTMLElement,
+    document.querySelector(".preview-area") as HTMLElement,
+);
