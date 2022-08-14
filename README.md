@@ -1,5 +1,7 @@
 # PHP play ground
 
+**Warning: Deploy this on server that has internet connected is extremely dangerous. As no functions are disabled or filtered. Hackers may utilize to control your machine.**
+
 ![Diagram](./diagram.svg)
 
 ## 1. Configure
